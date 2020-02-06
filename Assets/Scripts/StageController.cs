@@ -20,6 +20,7 @@ public class StageController : MonoBehaviour
     void Awake()
     { 
         GameMng.hasKey = false;
+        GameMng.lifeCount = 3;
 
         Transform startObj = UtilHelper.Find<Transform>(transform, "Stage/root/StartTrans");
         Transform endObj = UtilHelper.Find<Transform>(transform, "Stage/StageEnd");
@@ -29,13 +30,10 @@ public class StageController : MonoBehaviour
         blockList.AddRange(GetComponentsInChildren<Block>(true));
         itemList.AddRange(GetComponentsInChildren<Item>(true));
         laserList.AddRange(GetComponentsInChildren<Laser>(true));
-
-        GameMng.resultUI = Instantiate(Resources.Load<ResultUI>("prefabs/ResultUI"));
-        GameMng.resultUI.gameObject.SetActive(false);
-
+        
         inGameUI = FindObjectOfType<InGameUI>();
         if(inGameUI != null)
-            inGameUI.SetJumpEventFunc(OnClickJump); // 무엇
+            inGameUI.SetJumpEventFunc(OnClickJump);
 
         if (startObj != null)
         {

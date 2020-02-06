@@ -20,7 +20,7 @@ public class GameMng
     public static bool canInput = true;
 
     public static float startTime = 0;
-    public static float elapsedTime = 0;
+    static float elapsedTime = 0;
     public static float ElapsedTime
     {
         get { return elapsedTime; }

@@ -103,7 +103,8 @@ public class PlayerController : MonoBehaviour
 
     public void SetAniState(int state = 0)
     {
-        animator.SetInteger("State", state);
+        if(animator != null)
+            animator.SetInteger("State", state);
     }
 
     public void Move(Vector2 dir)

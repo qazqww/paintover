@@ -90,6 +90,7 @@
     <Compile Include="Assets\Scripts\UI\TitleUI.cs" />
     <Compile Include="Assets\Scripts\WaterTrigger.cs" />
     <None Include="Assets\Assets\VirtualJoystickTexture_Vol1\Readme.txt" />
+    <None Include="Assets\Resources\MyCustomCG.cginc" />
     <None Include="Assets\Assets\3 Worlds Asset Pack\Shaders\WaterTexture.shader" />
     <None Include="Assets\Resources\MyCustomSprite.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">

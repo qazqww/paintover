@@ -21,16 +21,16 @@ public class ResultUI : MonoBehaviour
 
         int score = 0;
 
-        if (GameMng.elapsedTime < 15)
+        if (GameMng.ElapsedTime < 15)
             score = 3;
-        else if (GameMng.elapsedTime < 30)
+        else if (GameMng.ElapsedTime < 30)
             score = 2;
         else
             score = 1;
 
         if (GameMng.selScene > GameMng.clearCount)
         {
-            ClearInfo clearInfo = new ClearInfo(score, GameMng.elapsedTime);
+            ClearInfo clearInfo = new ClearInfo(score, GameMng.ElapsedTime);
             GameMng.clearCount = GameMng.selScene;
             GameMng.clearInfo.Add(clearInfo);
         }
@@ -54,6 +54,6 @@ public class ResultUI : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
-        time.text = GameMng.elapsedTime.ToString("F2");
+        time.text = GameMng.ElapsedTime.ToString("F2");
     }
 }

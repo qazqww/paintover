@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddbb76dfc662de438af0f58c7ace1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jump: 1234
+  jump: 1250
   velocity: 5
   helmet: {fileID: 0}
 --- !u!1 &6763811042518854536

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartScene : MonoBehaviour
 {
     float elapsedTime = 0f;
+    bool executed = false;
 
     void Start()
     {
@@ -26,8 +27,9 @@ public class StartScene : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime >= 1.0f)
+        if (elapsedTime >= 1.0f && !executed)
         {
+            executed = true;
             SceneMng.Instance.Enable(Scene.Title);
             AudioManager.Instance.PlayBackground(BackgroundType.casual_04_loop.ToString(), true, 0.66f);
         }

@@ -25,7 +25,7 @@ public class InGameUI : MonoBehaviour
     public void Awake()
     {
         stage = FindObjectOfType<StageController>();
-        GameMng.startTime = Time.time;        
+        GameMng.startTime = Time.time;
         time = UtilHelper.Find<Text>(transform, "TopRight/Time");
         stageNum = UtilHelper.Find<Text>(transform, "Top/Stage");
         hp = UtilHelper.Find<Text>(transform, "TopLeft/Image/Text");
@@ -63,6 +63,11 @@ public class InGameUI : MonoBehaviour
     void OnClickRetry()
     {
         if (stage != null)
+        {
             stage.Reset();
+            GameMng.startTime = Time.time;
+            GameMng.ElapsedTime = 0;
+            GameMng.lifeCount = 3;
+        }
     }
 }
