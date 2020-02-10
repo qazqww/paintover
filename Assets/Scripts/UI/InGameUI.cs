@@ -57,12 +57,13 @@ public class InGameUI : MonoBehaviour
 
     void OnClickExit()
     {
-        SceneMng.Instance.EventScene(Channel.C1);
+        if(!GameMng.isResult)
+            SceneMng.Instance.EventScene(Channel.C1);
     }
 
     void OnClickRetry()
     {
-        if (stage != null)
+        if (stage != null && !GameMng.isResult)
         {
             stage.Reset();
             GameMng.startTime = Time.time;

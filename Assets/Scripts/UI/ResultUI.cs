@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class ResultUI : MonoBehaviour
 {
     Text time;
+    int score;
+    [SerializeField] GameObject[] stars = new GameObject[3];
 
     void Awake()
     {
@@ -14,12 +16,11 @@ public class ResultUI : MonoBehaviour
         time = UtilHelper.Find<Text>(transform, "Root/Center/Time");
     }
 
-    void OnClickContinue()
+    private void OnEnable()
     {
-        GameMng.canInput = true;
-        SceneMng.Instance.EventScene(Channel.C1);
-
-        int score = 0;
+        score = 0;
+        for (int i = 0; i < stars.Length; i++)
+            stars[i].SetActive(false);
 
         if (GameMng.ElapsedTime < 15)
             score = 3;
@@ -28,12 +29,30 @@ public class ResultUI : MonoBehaviour
         else
             score = 1;
 
-        if (GameMng.selScene > GameMng.clearCount)
+        for (int i = 0; i < score; i++)
+            stars[i].SetActive(true);
+
+        GameMng.isResult = true;
+    }
+
+    private void OnDisable()
+    {
+        GameMng.isResult = false;
+    }
+
+    void OnClickContinue()
+    {
+        GameMng.canInput = true;
+        SceneMng.Instance.EventScene(Channel.C1); 
+
+        if (GameMng.selScene > GameMng.clearCount) // 새로 클리어한 판이면
         {
             ClearInfo clearInfo = new ClearInfo(score, GameMng.ElapsedTime);
             GameMng.clearCount = GameMng.selScene;
             GameMng.clearInfo.Add(clearInfo);
         }
+        else if (GameMng.clearInfo[GameMng.selScene-1].clearTime > GameMng.ElapsedTime) // 기갱시
+            GameMng.clearInfo[GameMng.selScene-1] = new ClearInfo(score, GameMng.ElapsedTime);
 
         gameObject.SetActive(false);
     }
