@@ -91,7 +91,7 @@ public class BaseScene : MonoBehaviour
         while (!state)
         {
             elapsedTime += Time.deltaTime;
-            elapsedTime = Mathf.Clamp01(elapsedTime);
+            elapsedTime = Mathf.Clamp01(elapsedTime * 1.2f);
             GameMng.loadingUI.SetProgress(elapsedTime);
 
             if (elapsedTime >= 1.0f)

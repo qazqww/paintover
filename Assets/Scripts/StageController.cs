@@ -131,6 +131,8 @@ public class StageController : MonoBehaviour
             
         else
             Destroy(player.gameObject);
+
+        AudioManager.Instance.PlayEffect(SoundClip.death);
     }
 
     void OnClickJump()

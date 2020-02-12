@@ -45,8 +45,11 @@ public class Laser : MonoBehaviour
         PlayerController player = coll.GetComponent<PlayerController>();
         if(player != null)
         {
-            if(player.Color == Color)
+            if (player.Color == Color)
+            {
+                AudioManager.Instance.PlayEffect2(SoundClip.laser);
                 gameObject.SetActive(false);
+            }
         }
     }
 

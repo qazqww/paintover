@@ -13,8 +13,8 @@ public class StageUI : MonoBehaviour
 
         for (int i=0; i<btnList.Count; i++)
         {
-            // 버튼을 초기화하는 함수를 호출
             btnList[i].Init();
+
             // 클리어한 스테이지까지만 스테이지 버튼을 활성화
             if(i < GameMng.clearCount)
             {

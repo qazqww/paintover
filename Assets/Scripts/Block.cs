@@ -109,9 +109,12 @@ public class Block : MonoBehaviour
                 }
                 // 다를 때 -> 발판 색 변경
                 else
-                {                                        
+                {
                     if (rigidbody.velocity.y <= 0)
+                    {
                         Color = player.Color;
+                        AudioManager.Instance.PlayEffect(SoundClip.floor_change);
+                    }
                 }                
             }
 

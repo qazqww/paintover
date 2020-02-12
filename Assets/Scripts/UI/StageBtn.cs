@@ -21,12 +21,13 @@ public class StageBtn : MonoBehaviour
         {
             if (button != null) button.enabled = value;
             clear = value;
-            if (clear) btnOpen.gameObject.SetActive(true);
-            else btnLock.gameObject.SetActive(true);
+            if (clear)
+                btnOpen.gameObject.SetActive(true);
+            else
+                btnLock.gameObject.SetActive(true);
         }
     }
 
-    // 버튼을 초기화하는 함수
     public void Init()
     {
         btnOpen = UtilHelper.Find<Transform>(transform, "Open", false);
@@ -71,10 +72,12 @@ public class StageBtn : MonoBehaviour
         btnOpen.gameObject.SetActive(true);
 
         Transform star = btnOpen.transform.Find("StarGroup");
-        if (star != null) star.gameObject.SetActive(false);
+        if (star != null)
+            star.gameObject.SetActive(false);
 
         Transform check = btnOpen.transform.Find("Check");
-        if (check != null) check.gameObject.SetActive(false);
+        if (check != null)
+            check.gameObject.SetActive(false);
 
         btnLock.gameObject.SetActive(false);
         button.enabled = true;

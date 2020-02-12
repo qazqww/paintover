@@ -6,7 +6,7 @@ public class TitleUI : MonoBehaviour
 {
     private void OnClickPlay()
     {
-        AudioManager.Instance.PlayUISound(SoundType.btn_click.ToString());
+        //AudioManager.Instance.PlayUISound(SoundType.click.ToString());
 
         SceneMng.Instance.EventScene(Channel.C1);
 
@@ -16,7 +16,7 @@ public class TitleUI : MonoBehaviour
 
     private void OnClickQuit()
     {
-        AudioManager.Instance.PlayUISound(SoundType.btn_click.ToString());
+        AudioManager.Instance.PlayEffect(SoundClip.click. ToString());
         Application.Quit();
     }
     

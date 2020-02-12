@@ -45,6 +45,7 @@ public class Item : MonoBehaviour
             {
                 case ItemType.KEY:
                     GameMng.hasKey = true;
+                    AudioManager.Instance.PlayEffect2(SoundClip.key);
                     break;
 
                 case ItemType.COLOR:
@@ -52,6 +53,7 @@ public class Item : MonoBehaviour
                         PlayerController player = collision.GetComponent<PlayerController>();
                         player.Color = itemColor;
                     }
+                    AudioManager.Instance.PlayEffect2(SoundClip.head_change);
                     break;
 
                 case ItemType.SWAP:
@@ -62,6 +64,7 @@ public class Item : MonoBehaviour
                         if (stage != null)
                             stage.Swap(player.Color, itemColor);
                     }
+                    AudioManager.Instance.PlayEffect2(SoundClip.swap);
                     break;
             }
             gameObject.SetActive(false);

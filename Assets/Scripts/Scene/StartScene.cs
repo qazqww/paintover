@@ -15,8 +15,8 @@ public class StartScene : MonoBehaviour
         SceneMng.Instance.AddScene<Game>(Scene.Game, true);
         //SceneMng.Instance.Enable(Scene.Title, false);
 
-        AudioManager.Instance.LoadClip<BackgroundType>("AudioClip/Background/");
-        AudioManager.Instance.LoadClip<SoundType>("AudioClip/Effect/");
+        AudioManager.Instance.LoadClip<Background>("AudioClip/Background/");
+        AudioManager.Instance.LoadClip<SoundClip>("AudioClip/Effect/");
 
         GameMng.loadingUI = UIHelper.Instantiate<LoadingUI>("prefabs/LoadingUI", Vector3.zero, Quaternion.identity, null);
         GameMng.loadingUI.Init(false);
@@ -31,7 +31,7 @@ public class StartScene : MonoBehaviour
         {
             executed = true;
             SceneMng.Instance.Enable(Scene.Title);
-            AudioManager.Instance.PlayBackground(BackgroundType.casual_04_loop.ToString(), true, 0.66f);
+            AudioManager.Instance.PlayBackground(Background.Safety_Net, true, 0.66f);
         }
     }
 }

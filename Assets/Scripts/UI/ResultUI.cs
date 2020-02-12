@@ -33,6 +33,8 @@ public class ResultUI : MonoBehaviour
             stars[i].SetActive(true);
 
         GameMng.isResult = true;
+
+        AudioManager.Instance.PlayBackground(Background.clear, false, 0.66f);
     }
 
     private void OnDisable()
@@ -54,6 +56,8 @@ public class ResultUI : MonoBehaviour
         else if (GameMng.clearInfo[GameMng.selScene-1].clearTime > GameMng.ElapsedTime) // 기갱시
             GameMng.clearInfo[GameMng.selScene-1] = new ClearInfo(score, GameMng.ElapsedTime);
 
+        AudioManager.Instance.SetPause(true);
+
         gameObject.SetActive(false);
     }
 
@@ -67,6 +71,13 @@ public class ResultUI : MonoBehaviour
 
         if (stage != null)
             stage.Reset();
+
+        int r = Random.Range(0, 2);
+        if (r == 0)
+            AudioManager.Instance.PlayBackground(Background.Bongo_Madness, true, 0.66f);
+        else
+            AudioManager.Instance.PlayBackground(Background.Lovable_Clown_Sit_Com, true, 0.66f);
+
         gameObject.SetActive(false);
     }
 

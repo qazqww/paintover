@@ -3,21 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BackgroundType
+public enum Background
 {
-    casual_04_loop = 0,
+    Bongo_Madness = 0,
+    Lovable_Clown_Sit_Com,
+    Safety_Net,
+    clear,
     End
 }
 
-public enum SoundType
+public enum SoundClip
 {
-    btn_click = BackgroundType.End, // => BackgroundType 파일 끝에 이어서 번호가 붙게 됨
+    click = Background.End, // => BackgroundType 파일 끝에 이어서 번호가 붙게 됨
+    death,
+    floor_change,
+    footstep_concrete_land_01,
+    footstep_metal_low_walk_01,
+    head_change,
+    jump,
+    key,
+    laser,
+    swap
 }
 
 public class AudioManager : MonoBehaviour
 {
     AudioSource background;
-    AudioSource uiSource;
+    AudioSource effectSound;
+    AudioSource effectSound2;
     AudioListener listener;
     float volume; // 전체적인 사운드 볼륨 제어, Audio Listener에 사용할 값
 
@@ -34,9 +47,11 @@ public class AudioManager : MonoBehaviour
                 instance = obj.GetComponent<AudioManager>();
 
                 instance.background = obj.AddComponent<AudioSource>();
-                instance.Setting2D(instance.background);
-                instance.uiSource = obj.AddComponent<AudioSource>();
-                instance.Setting2D(instance.uiSource);
+                instance.AudioSetting(instance.background);
+                instance.effectSound = obj.AddComponent<AudioSource>();
+                instance.AudioSetting(instance.effectSound);
+                instance.effectSound2 = obj.AddComponent<AudioSource>();
+                instance.AudioSetting(instance.effectSound2);
 
                 //AudioClip clip = Resources.Load<AudioClip>("");
 
@@ -47,9 +62,11 @@ public class AudioManager : MonoBehaviour
     }
 
     // 사운드 출력 설정 함수
-    void Setting2D(AudioSource audio, bool loop = false)
+    void AudioSetting(AudioSource audio, bool loop = false)
     {
-        if (audio == null) return;
+        if (audio == null)
+            return;
+
         audio.loop = loop;
         audio.playOnAwake = true;
         audio.spatialBlend = 0; // 공간감 0(2D) ~ 1(3D)
@@ -59,7 +76,7 @@ public class AudioManager : MonoBehaviour
         audio.volume = volume;
     }
 
-    public void Play(AudioSource source, string soundType, bool loop = false, float volume = 1.0f)
+    public void PlayBG(AudioSource source, string soundType, bool loop = false, float volume = 1.0f)
     {
         if (background != null)
         {
@@ -73,14 +90,62 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlayBackground(string sType, bool loop = true, float volume = 1.0f)
+    public void PlayEF(AudioSource source, string soundType, bool loop = false, float volume = 1.0f)
     {
-        Play(background, sType, loop, volume);
+        if (effectSound != null)
+        {
+            if (audioClips.ContainsKey(soundType))
+            {
+                effectSound.clip = audioClips[soundType];
+                effectSound.volume = volume;
+                effectSound.loop = loop;
+                effectSound.Play();
+            }
+        }
     }
 
-    public void PlayUISound(string sType, bool loop = false, float volume = 1.0f)
+    public void PlayEF2(AudioSource source, string soundType, bool loop = false, float volume = 1.0f)
     {
-        Play(uiSource, sType, loop, volume);
+        if (effectSound2 != null)
+        {
+            if (audioClips.ContainsKey(soundType))
+            {
+                effectSound2.clip = audioClips[soundType];
+                effectSound2.volume = volume;
+                effectSound2.loop = loop;
+                effectSound2.Play();
+            }
+        }
+    }
+
+    public void PlayBackground(string sType, bool loop = true, float volume = 1.0f)
+    {
+        PlayBG(background, sType, loop, volume);
+    }
+
+    public void PlayBackground(Background bgType, bool loop = true, float volume = 1.0f)
+    {
+        PlayBG(background, bgType.ToString(), loop, volume);
+    }
+
+    public void PlayEffect(string soundType, bool loop = false, float volume = 1.0f)
+    {
+        PlayEF(effectSound, soundType, loop, volume);
+    }
+
+    public void PlayEffect(SoundClip soundType, bool loop = false, float volume = 1.0f)
+    {
+        PlayEF(effectSound, soundType.ToString(), loop, volume);
+    }
+
+    public void PlayEffect2(string soundType, bool loop = false, float volume = 1.0f)
+    {
+        PlayEF2(effectSound2, soundType, loop, volume);
+    }
+
+    public void PlayEffect2(SoundClip soundType, bool loop = false, float volume = 1.0f)
+    {
+        PlayEF2(effectSound2, soundType.ToString(), loop, volume);
     }
 
     public void AddClip(string soundType, string path)
@@ -111,7 +176,7 @@ public class AudioManager : MonoBehaviour
         AudioListener.pause = state;
     }
 
-    // 특정 사운드 파일의 볼륨이 유독 크거나 작을 경우, 따로 관리할 수 있는 함수
+    // 특정 사운드 파일의 볼륨이 유독 크거나 작을 경우, 따로 관리하는 함수
     public void SetEffectVolume(string path, float volume)
     {
         //if (sourceDic.ContainsKey(path))

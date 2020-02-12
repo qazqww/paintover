@@ -110,15 +110,22 @@ public class PlayerController : MonoBehaviour
     public void Move(Vector2 dir)
     {
         rigidbody.velocity = new Vector2(dir.x * velocity, rigidbody.velocity.y);
+
+        if (rigidbody.velocity.y != 0)
+            return;
+        //AudioManager.Instance.PlayUISound(SoundType.footstep_metal_low_walk_01);
     }
 
     public void Jump(float jumpVal)
     {
-        if (rigidbody.velocity.y != 0) return;
+        if (rigidbody.velocity.y != 0)
+            return;
+
         if (jumpVal >= 0)
         {
             animator.SetTrigger("Jump");
             rigidbody.AddForce(Vector2.up * jump);
+            AudioManager.Instance.PlayEffect2(SoundClip.jump);
         }
     }
 

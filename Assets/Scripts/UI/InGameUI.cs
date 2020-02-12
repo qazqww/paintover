@@ -38,6 +38,13 @@ public class InGameUI : MonoBehaviour
         UIHelper.BindBtnFunc(transform, "TopRight/ExitBtn", OnClickExit);
         UIHelper.BindBtnFunc(transform, "TopRight/RetryBtn", OnClickRetry);
 
+        AudioManager.Instance.SetPause(false);
+        int r = Random.Range(0, 2);
+        if(r == 0)
+            AudioManager.Instance.PlayBackground(Background.Bongo_Madness, true, 0.66f);
+        else
+            AudioManager.Instance.PlayBackground(Background.Lovable_Clown_Sit_Com, true, 0.66f);
+
         //joystick.Init();
     }
     
