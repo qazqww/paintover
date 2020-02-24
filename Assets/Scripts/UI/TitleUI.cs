@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TitleUI : MonoBehaviour
 {
-    private void OnClickPlay()
+    void OnClickPlay()
     {
         //AudioManager.Instance.PlayUISound(SoundType.click.ToString());
 
@@ -14,7 +14,7 @@ public class TitleUI : MonoBehaviour
         GameMng.loadingUI.SetActive(true);
     }
 
-    private void OnClickQuit()
+    void OnClickQuit()
     {
         AudioManager.Instance.PlayEffect(SoundClip.click. ToString());
         Application.Quit();

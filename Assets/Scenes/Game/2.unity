@@ -3316,6 +3316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColor: 1
+  debugText: {fileID: 0}
 --- !u!4 &1503717026
 Transform:
   m_ObjectHideFlags: 0

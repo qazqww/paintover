@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColor: 1
+  debugText: {fileID: 0}
 --- !u!4 &1503717026
 Transform:
   m_ObjectHideFlags: 0
@@ -2666,7 +2667,7 @@ PrefabInstance:
     - target: {fileID: 7062166834331784867, guid: 67dbf5e9adf5b7f438c26023072e7bea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.8900001
+      value: 1.05
       objectReference: {fileID: 0}
     - target: {fileID: 7062166834331784867, guid: 67dbf5e9adf5b7f438c26023072e7bea,
         type: 3}
@@ -2713,6 +2714,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7062166834331784864, guid: 67dbf5e9adf5b7f438c26023072e7bea,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7062166834331784865, guid: 67dbf5e9adf5b7f438c26023072e7bea,
         type: 3}
       propertyPath: m_itemColor
@@ -2727,11 +2733,6 @@ PrefabInstance:
         type: 3}
       propertyPath: itemColor
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7062166834331784864, guid: 67dbf5e9adf5b7f438c26023072e7bea,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67dbf5e9adf5b7f438c26023072e7bea, type: 3}

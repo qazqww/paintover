@@ -27,7 +27,7 @@ public class StartScene : MonoBehaviour
     void Update()
     {
         elapsedTime += Time.deltaTime;
-        if (elapsedTime >= 1.0f && !executed)
+        if (elapsedTime >= 0.0f && !executed)
         {
             executed = true;
             SceneMng.Instance.Enable(Scene.Title);

@@ -2213,6 +2213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerColor: 1
+  debugText: {fileID: 0}
 --- !u!4 &1503717026
 Transform:
   m_ObjectHideFlags: 0
@@ -3027,7 +3028,7 @@ PrefabInstance:
     - target: {fileID: 7062166834331784867, guid: 67dbf5e9adf5b7f438c26023072e7bea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0200005
+      value: 3.62
       objectReference: {fileID: 0}
     - target: {fileID: 7062166834331784867, guid: 67dbf5e9adf5b7f438c26023072e7bea,
         type: 3}

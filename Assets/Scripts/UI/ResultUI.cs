@@ -22,9 +22,9 @@ public class ResultUI : MonoBehaviour
         for (int i = 0; i < stars.Length; i++)
             stars[i].SetActive(false);
 
-        if (GameMng.ElapsedTime < 15)
+        if (GameMng.ElapsedTime < 16)
             score = 3;
-        else if (GameMng.ElapsedTime < 30)
+        else if (GameMng.ElapsedTime < 32)
             score = 2;
         else
             score = 1;

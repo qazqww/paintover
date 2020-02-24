@@ -59,7 +59,7 @@ public class InGameUI : MonoBehaviour
 
     public void SetJumpEventFunc(UnityEngine.Events.UnityAction action)
     {
-        jumpBtn.onClick.AddListener(action);
+        //jumpBtn.onClick.AddListener(action);
     }
 
     void OnClickExit()

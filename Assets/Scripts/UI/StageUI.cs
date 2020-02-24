@@ -28,5 +28,13 @@ public class StageUI : MonoBehaviour
         }
 
         btnList[GameMng.clearCount].DefaultStage(GameMng.clearCount + 1);
+
+        UIHelper.BindBtnFunc(transform, "QuitBtn", OnClickQuit);
+    }
+
+    void OnClickQuit()
+    {
+        AudioManager.Instance.PlayEffect(SoundClip.click.ToString());
+        Application.Quit();
     }
 }
